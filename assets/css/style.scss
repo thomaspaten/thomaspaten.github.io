@@ -1,0 +1,566 @@
+// Table of content
+
+// 0. RESET.CSS
+
+// 1. THEME
+
+// 1.1 fonts
+// 1.2 colors
+// 1.2.1 main colors
+// 1.2.2 button colors
+// 1.2.3  icon colors  :
+
+// 2. BASE
+
+// 2.1 mixins
+
+// 3. LAYOUT
+
+// 3.1 default layout
+// 3.2 sections layouts
+
+// 4. MODULE
+
+// 4.1 Generic modules
+// 4.2 Sections modules
+
+
+// ####################
+
+// 0. RESET.CSS
+
+@import"reset.scss";
+
+// 1. THEME 
+
+//Note : To see this section , open color-font.scss
+
+@import"color-font.scss";
+
+
+// 2. BASE
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  background-color: $bg-body-color;
+}
+
+main {
+  display: flex;
+  background-color: $bg-body-color;
+}
+
+img {
+  border-radius: 50%;
+}
+
+// 2.1 mixins
+
+@mixin big-title($f-size, $t-align, $margin) {
+  font-size: $f-size;
+  line-height: $f-size;
+  text-align: $t-align;
+  margin: $margin;
+  font-weight: 400;
+  color: $main-color;
+  font-family: $lato;
+  text-transform: capitalize;
+}
+
+// 3. LAYOUT
+
+// 3.1 default layout
+
+.l-box-default {
+  margin: 1.15vw 0;
+  padding: 2.3vw;
+  width: 100%;
+  background-color: $bg-box-color;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: stretch;
+}
+
+.l-col-default {
+  margin: 0 1.15vw;
+  display: flex;
+  flex-direction: column;
+}
+
+// 3.2 Sections layouts
+
+// ##### Section 1 #####
+
+.l-col-profil {
+  width: 20.71%;
+}
+
+.l-button-profile {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.3vw;
+  :nth-child(0n + 1) {
+    background-color: $btn1-color;
+  }
+  :nth-child(0n + 2) {
+    background-color: $btn2-color;
+  }
+}
+
+// Section 2
+
+.l-wide-column {
+  margin: 0 0 0 1.15vw;
+  width: 60%;
+  margin: 0 1.15vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.l-box-double {
+  margin: 1.15vw 0;
+  padding: 2.3em;
+  width: 100%;
+  background-color: $bg-box-color;
+  display: flex;
+  flex-grow: 1;
+  justify-content: stretch;
+}
+
+.l-box-article {
+  width: 20%;
+  margin-right: 1.15vw;
+}
+
+.l-box-review {
+  width: 20%;
+  margin-left: 1.15vw;
+}
+
+.l-article-top {
+  padding-bottom: 40px;
+  border-bottom: 1px solid $main-color;
+  h1:nth-child(0n + 1) {
+    margin-bottom: 70px;
+  }
+}
+
+.l-article-bottom {
+  h1:nth-child(0n + 1) {
+    margin-top: 2.3vw;
+  }
+}
+
+//Section 3
+
+.l-col-follow-todo {
+  width: 18.04%;
+}
+
+.l-box-follow {
+  padding-right: 0.5vw;
+  border-top: 1px solid $btn8-color;
+  margin-bottom: 0;
+}
+
+.l-box-todo {
+  border-top: 1px solid lighten($main-color, 40%);
+  margin-top: 0;
+}
+
+// 4. MODULE
+
+// 4.1 Generic modules
+
+.text-list {
+  li {
+    border-bottom: 1px solid lighten($main-color, 60%);
+    font-size: 14px;
+    line-height: 42px;
+    color: $main-color;
+    font-family: "Lato";
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+//probleme seems to be at spam
+  span {
+    font-size: 18px;
+    line-height: 42px;
+    font-family: $lato;
+    font-weight: 400;
+    color: lighten($main-color, 40%);
+    float: right;
+  }
+}
+
+.article-default {
+  h1 {
+    @include big-title(20px, left, 0);
+    margin-bottom: 15px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 28px;
+    color: $main-color;
+    font-family: "Lato";
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+}
+
+// 4.2 Sections modules
+
+
+// ##### MENU BAR #####
+
+#menu-header {
+  box-shadow: 0px 1px 4px $main-color;
+  background-color: $bg-box-color;
+
+  i {
+    padding: 1.17%;
+    font-size: 18px;
+  }
+}
+
+#profile-header {
+  display: flex;
+  flex-direction: column;
+  padding: 1.17%;
+  background-color: lighten($main-color, 75%);
+  border-bottom: 1px solid lighten($main-color, 65%);
+  margin-bottom: 1.15vw;
+
+  h1 {
+    @include big-title(20px, left, 0 0 0.5vw 0);
+    font-weight: 700;
+  }
+  sub {
+    font-size: 14px;
+    line-height: 14px;
+    font-family: $lato;
+    font-weight: 400;
+    color: lighten($main-color, 40%);
+  }
+}
+
+//##### MODULE SECTION 1 #####
+
+//##### Profile #####
+
+.profile {
+  img {
+    display: block;
+    margin: 0 auto 15px auto;
+  }
+
+  h1 {
+    @include big-title(20px, center, 0 0 0.8vw 0);
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 18px;
+    font-family: $lato;
+    font-weight: 400;
+    color: lighten($main-color, 40%);
+    text-align: center;
+  }
+
+  input[type="button"] {
+    width: 45%;
+    border: none;
+    font-family: $lato;
+    font-size: 0.9vw;
+    margin-top: 10%;
+    margin-bottom: 15%;
+    padding: 0.5em 1em;
+    color: $button-font;
+  }
+
+  li:nth-child(0n + 1) {
+    border-top: 1px solid lighten($main-color, 60%);
+  }
+
+  li:nth-child(0n + 4) {
+    border: none;
+  }
+}
+
+// ##### SKILLS #####
+
+.skills {
+  h1 {
+    @include big-title(20px, center, 0);
+    margin-bottom: 2.3vw;
+  }
+  li:nth-child(0n + 9) {
+    border: none;
+    margin-bottom: 25px;
+  }
+}
+
+// ##### TASK #####
+
+.task-li-default {
+  padding-top: 22px;
+
+  position: relative;
+  font-family: $lato;
+  display: flex;
+  &:nth-child(0n + 1) {
+    padding-top: 0;
+  }
+  input[type="button"] {
+    display: flex;
+    border: none;
+    min-width: 60px;
+    min-height: 20px;
+    border-radius: 2px;
+    color: $button-font;
+  }
+
+  .btn-arrow-right {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid green;
+    left: 60px;
+    bottom: 4px;
+  }
+
+  p {
+    font-size: 14px;
+    padding: 0.5em 1em;
+    margin-left: 10px;
+  }
+}
+
+// ##### TASK ARROW BUTTONS COLORS #####
+
+#btn3-color {
+  background-color: $btn3-color;
+  & ~ .btn-arrow-right {
+    border-left: 10px solid $btn3-color;
+  }
+}
+
+#btn4-color {
+  background-color: $btn4-color;
+  & ~ .btn-arrow-right {
+    border-left: 10px solid $btn4-color;
+  }
+}
+
+#btn5-color {
+  background-color: $btn5-color;
+  & ~ .btn-arrow-right {
+    border-left: 10px solid $btn5-color;
+  }
+}
+
+#btn6-color {
+  background-color: $btn6-color;
+  & ~ .btn-arrow-right {
+    border-left: 10px solid $btn6-color;
+  }
+}
+#btn7-color {
+  background-color: $btn7-color;
+  & ~ .btn-arrow-right {
+    border-left: 10px solid $btn7-color;
+  }
+}
+
+// ##### MODULE SIGN IN #####
+
+.form-sign-in {
+  font-family: $lato;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  p {
+    margin: 10px 0;
+    input[type="text"] {
+      margin-left: 15px;
+
+      height: 30px;
+    }
+    input[type="submit"] {
+      border: none;
+      background-color: $btn8-color;
+      border-radius: 2px;
+      color: $button-font;
+      padding: 8px 30px;
+    }
+    span {
+      margin: 10px;
+    }
+  }
+}
+
+// ##### MODULE ARTICLE ##### --> Available in the Generic Module section
+
+// ##### MODULE REVIEWS #####
+
+.review {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid lighten($main-color, 40%);
+  .fas {
+    color: $rating-icon;
+  }
+
+}
+
+.review-title {
+font-family: $lato;
+  @include big-title(20px, left, 0 0 1vw 0);
+}
+
+.review-appreciation {
+  h2 {
+    font-size: 18px;
+    line-height: 22px;
+    font-family: $lato;
+    font-weight: 400;
+    color: #338ec9;
+    text-align: left;
+    margin-bottom: 0.3em;
+  }
+}
+
+.rating-note {
+  display: inline-block;
+  padding: 8px;
+  background-color: $rating-icon;
+  border-radius: 2px;
+  font-family: $lato;
+  color: $button-font;
+  font-size: 13px;
+}
+
+.rating-text {
+  font-size: 14px;
+  line-height: 28px;
+  color: $main-color;
+  font-family: "Lato";
+  font-weight: 400;
+}
+
+.l-square-padding-review {
+  height: 100px;
+  width: 100px;
+  padding-right: 130px;
+}
+
+// ##### MODULE FOLLOW #####
+
+.follow {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  font-family: $lato;
+  padding-right: 1.8vw;
+}
+
+.square-padding-follow {
+  height: 75px;
+  width: 75px;
+  padding-right: 95px;
+}
+
+.follow-bloc-title {
+  @include big-title(20px, left, 0 0 1vw 0);
+}
+
+.follow-role-title {
+  h2 {
+    font-size: 18px;
+    line-height: 22px;
+    font-family: $lato;
+    font-weight: 400;
+    color: $main-color;
+    text-align: left;
+    margin-bottom: 0.3em;
+  }
+  p {
+    color: lighten($main-color, 40%);
+  }
+}
+
+.follow-button {
+  border: none;
+  background-color: $btn9-color;
+  border-radius: 2px;
+  color: $button-font;
+  padding: 8px 30px;
+}
+
+//##### MODULE TODO LIST #####
+
+.todo-form {
+  position: relative;
+  font-family: $lato;
+  legend {
+    @include big-title(20px, left, 0 0 1vw 0);
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 22px;
+    font-family: $lato;
+    font-weight: 400;
+    color: lighten($main-color, 40%);
+    text-align: left;
+    margin-bottom: 0.3em;
+  }
+  p {
+    margin: 25px 0;
+  }
+
+  label {
+    font-size: 14px;
+    font-family: $lato;
+  }
+  input[type="text"] {
+    border: solid 1px lighten($main-color, 50%);
+    border-radius: 2px;
+    font-size: 16px;
+    height: 2.4em;
+    width: 120px;
+    font-family: $lato;
+    display: inline-block;
+  }
+  input[type="button"] {
+    border: none;
+    font-size: 16px;
+    padding: 0.6em 1em;
+
+    background-color: $btn9-color;
+    position: relative;
+    bottom: 38px;
+    left: 119px;
+    font-family: $lato;
+    color: $button-font;
+  }
+}
+
+// ##### FOOTER #####
+
+footer {
+  font-family: $lato;
+  text-align: center;
+  background-color: $bg-box-color;
+  margin-top: 1.8vw;
+  line-height: 40px;
+  height: 40px;
+}

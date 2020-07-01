@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Examen sommatif flex Thomas Patenaude Poulin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fa/all.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- Je crois qu'un wrapper serait inutile dans ce projet. -->
+    <!-- Header  -->
+
+    <header>
+        <div id="menu-header">
+            <i class="fas fa-list-ul"></i>
+            <i class="fas fa-user"></i>
+        </div>
+
+        <div id="profile-header">
+            <h1>Profile</h1>
+            <sub>Sub Title</sub>
+        </div>
+    </header>
+
+    <!-- Main -->
+
+    <main>
+
+        <!-- Column profil -->
+
+        <section class="l-col-default l-col-profil">
+
+            <!-- Box 1 profile picture -->
+
+            <!-- Selon MDN la balise Aside représente une partie d'un document 
+                dont le contenu n'a qu'un rapport indirect avec le contenu principal du document.
+            Je ne considère pas cette section comme secondaire et donc j'ai utilisé un div -->
+
+            <div class="l-box-default profile">
+                <img src="http://www.stevensegallery.com/127/127" alt="profile">
+                
+                <h1>Steven Seagal </h1>
+
+                <h2>Redneck Badass</h2>
+
+                <div class="l-button-profile">
+                    <input type="button" value="FOLLOW">
+                    <input type="button" value="MESSAGE">
+                </div>
+                <ol class="text-list">
+                    <li>Lorem, ipsum.<span>11</span></li>
+                    <li>Dicta, recusandae.<span>12</span></li>
+                    <li>Non, vero.<span>13</span></li>
+                    <li>Minima, temporibus.<span>14</span></li>
+                </ol>
+            </div>
+
+            <!-- Box skills -->
+
+            <div class="l-box-default skills">
+
+                <h1>My Top Skills</h1>
+
+                <ul class="text-list">
+                    <li>Graphic Design<span>11</span></li>
+                    <li>Banner Design<span>12</span></li>
+                    <li>Logo Design<span>13</span></li>
+                    <li>Brochure Design<span>14</span></li>
+                    <li>Photoshop<span>15</span></li>
+                    <li>Business Cards<span>16</span></li>
+                    <li>Landing Pages<span>17</span></li>
+                    <li>Bootstrap<span>18</span></li>
+                    <li>User Experience Design<span>19</span></li>
+                </ul>
+            </div>
+
+        </section>
+
+     <!-- Wide column -->
+
+        <section class="l-wide-column">
+
+            <!-- Box Task -->
+
+            <div class="l-box-double">
+                
+                <div class="task">
+                    <ul>
+                        <li class="task-li-default"><input id="btn3-color" type="button" value="20:00">
+                            <div class="btn-arrow-right"></div>
+                            <p>Responsive mockup on tablet</p>
+                        </li>
+                        <li class="task-li-default"><input id="btn4-color" type="button" value="19:30">
+                            <div class="btn-arrow-right"></div>
+                            <p>Design Advertisement Banner</p>
+                        </li>
+                        <li class="task-li-default"><input id="btn5-color" type="button" value="15:10">
+                            <div class="btn-arrow-right"></div>
+                            <p>Sketch new layout with Axure for Office</p>
+                        </li>
+                        <li class="task-li-default"><input id="btn6-color" type="button" value="9:00">
+                            <div class="btn-arrow-right"></div>
+                            <p>Design Profile Page for Dashboard</p>
+                        </li>
+                        <li class="task-li-default"><input id="btn7-color" type="button" value="7:30">
+                            <div class="btn-arrow-right"></div>
+                            <p>Planning Meeting with Dev Team</p>
+                        </li>
+                    </ul>
+                </div>
+
+               <!-- Box Sign in -->
+
+                <div>
+                    <form class="form-sign-in" action="submit">
+                        <p>
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" placeholder="Username" required>
+                        </p>
+                        <p>
+                            <label for="password">Password</label>
+                            <input type="text" name="password" id="password" placeholder="Password" required>
+                        </p>
+                        <p id="form-2-word-label">
+                            <label for="confirm-password">Confirm<br>
+                                Password</label>
+                            <input type="text" name="confirm-password" id="confirm-password"
+                                placeholder="Confirm Password" required>
+                        </p>
+                        <p>
+                            <input type="submit" value="Sign In">
+                            <span>
+                                <input class="remember-me" type="checkbox" name="Remember-me" id="remember-me">
+                                <label class="remember-me" for="remember-me">Remember me</label></span>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Box Article -->
+
+            <div class="l-box-article l-box-default">
+
+                <article class="article-default l-article-top">
+                    
+                    <h1>Experience</h1>
+
+                    <h1>Designer</h1>
+
+                    <p>QGS Viet Nam <span>Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+                    </p>
+
+                    <p>Jan 2013 - 2015</p>
+                    <p>
+                        Design / mini web / landing page website creation interface
+                        Design user interface details, including creating wireframe mockups and writing user interaction
+                        specifications for new functionality and behaviors.
+                        Design Mockup Web, Web App, App for Android, iOS...
+                        Support for image editing.</p>
+
+                </article>
+
+                <article class="article-default l-article-bottom">
+                    
+                    <h1>Freelance</h1>
+                    
+                    <p>Freelance</p>
+                    <p>Apr 2007 - present</p>
+                    <p>
+                        CIP design to printing name cards, articles, banners, bandroll, poster, POSM
+                        Edit article, one banner for the site instead of the other editor
+                        Design user interface details, including creating wireframe mockups and writing user interaction
+                        specifications for new functionality and behaviors.
+                        Design Mockup Web, Web App, App for Android, iOS...</p>
+                </article>
+            </div>
+
+            <!-- Box Reviews -->
+
+            <div class="l-box-default l-box-review">
+
+                <h1 class="review-title">Recent Reviews</h1>
+
+                <!-- Review 1 -->
+
+                    <div class="review">
+                        <div class="l-square-padding-review"><img src="http://www.stevensegallery.com/100/100"
+                                alt="Marc-Lamothe"></div>
+                        <div class="review-appreciation">
+
+                            <h2>Website template files design only</h2>
+
+                            <p class="rating-note">5.0</p>
+                            <i class="fas fa-star"></i><i class="fas fa-star">
+                            </i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <p class="rating-text">“Very professional and easy to communicate with.
+                                I am about to give him another project already”</p>
+                        </div>
+                    </div>
+                    <!-- Review 2 -->
+
+                    <div class="review">
+                        <div class="l-square-padding-review"><img src="http://www.stevensegallery.com/100/100"
+                                alt="Marc-Lamothe"></div>
+                        <div class="review-appreciation">
+
+                            <h2>Website template files design only</h2>
+
+                            <p class="rating-note">5.0</p>
+                            <i class="fas fa-star"></i><i class="fas fa-star">
+                            </i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <p class="rating-text">“Very professional and easy to communicate with.
+                                I am about to give him another project already”</p>
+                        </div>
+                    </div>
+                    <!-- Review 3 -->
+
+                    <div class="review">
+                        <div class="l-square-padding-review"><img src="http://www.stevensegallery.com/100/100"
+                                alt="Marc-Lamothe">
+                        </div>
+                        <div class="review-appreciation">
+
+                            <h2>Website template files design only</h2>
+
+                            <p class="rating-note">5.0</p>
+                            <i class="fas fa-star"></i><i class="fas fa-star">
+                            </i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <p class="rating-text">“Very professional and easy to communicate with.
+                                I am about to give him another project already”</p>
+                        </div>
+                    </div>
+                    <!-- Review 4 -->
+
+                    <div class="review">
+                        <div class="l-square-padding-review"><img src="http://www.stevensegallery.com/100/100"
+                                alt="Marc-Lamothe"></div>
+                        <div class="review-appreciation">
+
+                            <h2>Website template files design only</h2>
+
+                            <p class="rating-note">5.0</p>
+                            <i class="fas fa-star"></i><i class="fas fa-star">
+                            </i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <p class="rating-text">“Very professional and easy to communicate with.
+                                I am about to give him another project already”</p>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+        <!-- Column follow todo -->
+
+        <aside class="l-col-follow-todo l-col-default">
+
+            <!-- Aside follow -->
+
+            <div class="l-box-default l-box-follow">
+
+                <h1 class="follow-bloc-title">Who to follow</h1>
+
+                <!-- Person to follow 1 -->
+
+                <div class="follow">
+                    <div class="square-padding-follow"><img src="http://www.stevensegallery.com/75/75"
+                            alt="Marc-Lamothe"></div>
+                    <div class="follow-role-title">
+                        <h2>Ruben Aadezijf </h2>
+                        <p>Designer</p>
+                    </div>
+                </div>
+                <!-- Person to follow 2 -->
+                <div class="follow">
+                    <div class="square-padding-follow"><img src="http://www.stevensegallery.com/75/75"
+                            alt="Marc-Lamothe"></div>
+                    <div class="follow-role-title">
+                        <h2>Salomé Patéminla</h2>
+                        <p>Writter, Editor</p>
+                    </div>
+                </div>
+                <!-- Person to follow 3 -->
+                <div class="follow">
+                    <div class="square-padding-follow"><img src="http://www.stevensegallery.com/75/75"
+                            alt="Marc-Lamothe"></div>
+                    <div class="follow-role-title">
+                        <h2>Jacques Houche de Boue</h2>
+                        <p>Writter, Editor</p>
+                    </div>
+                </div>
+
+                <!-- Person to follow 4 -->
+                <div class="follow">
+                    <div class="square-padding-follow"><img src="http://www.stevensegallery.com/75/75"
+                            alt="Marc-Lamothe"></div>
+                    <div class="follow-role-title">
+                        <h2>Eugénie Desalpage</h2>
+                        <p>Writter, Editor</p>
+                    </div>
+                </div>
+
+
+                <!-- Person to follow 5 -->
+                <div class="follow">
+                    <div class="square-padding-follow"><img src="http://www.stevensegallery.com/75/75"
+                            alt="Marc-Lamothe"></div>
+                    <div class="follow-role-title">
+                        <h2>Gervais Ofrez</h2>
+                        <p>Writter, Editor</p>
+                    </div>
+                </div>
+                <input class="follow-button" type="button" value="More Connections">
+            </div>
+
+
+<!-- Aside todo -->
+
+            <div class="l-box-todo l-box-default">
+                <form class="todo-form" action="submit">
+                    <fieldset>
+                    <legend>Todo List</legend>
+                    <h2>2 of 6 remaining</h2>
+                    <p>
+                        <input type="checkbox" name="todo1" id="todo1">
+                        <label for="todo1"> Build an angular app</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" name="todo2" id="todo2">
+                        <label for="todo2"> Creating component page</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" name="todo3" id="todo3">
+                        <label for="todo3">Design One page theme</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" name="todo4" id="todo4">
+                        <label for="todo4">Build a js based app</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" name="todo5" id="todo5">
+                        <label for="todo5">Responsive design for Smartphone</label>
+                    </p>
+                    <p>
+                        <input type="text" name="Add" placeholder="Add new todo">
+                        <input type="button" value="Add">
+                    </p>
+                </fieldset>
+                </form>
+            </div>
+        </aside>
+    </main>
+
+<!-- footer -->
+
+    <footer>Quisque luctus mauris vitae urna finibus ultrices</footer>
+</body>
+</html>
