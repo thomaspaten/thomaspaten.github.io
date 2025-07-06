@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { ChevronRight, Github, Thermometer, Droplets, Wind, Egg, CheckCircle, ExternalLink, Mail, Linkedin } from 'lucide-react';
+import { 
+  ChevronRight, Github, Thermometer, Droplets, Egg, 
+  CheckCircle, ExternalLink, Mail, Linkedin, RefreshCcwDot,
+  Cpu, Code, Box,
+  Wind, Shield, Bluetooth, ToggleLeft,
+  Flame
+} from 'lucide-react';
 import fritzingWiringPlanImg from '../public/img/fritzing-wiring-plan.png'
 import arduinoCircuitImg from '../public/img/arduino-circuit.png'
 import bottomSectionImg from '../public/img/bottom-section.jpg'
@@ -27,42 +33,37 @@ const IncubatorPortfolio: React.FC = () => {
   const projectImages: ProjectImage[] = [
     { url: fritzingWiringPlanImg, caption: "Fritzing Wiring Plan: Complete Incubator Circuit" },
     { url: arduinoCircuitImg, caption: "Wired Incubator: From Fritzing to Reality" },
-    { url: bottomSectionImg, caption: "Setter Phase: Days 1–18 – Embryo Development" },
-    { url: topSectionImg, caption: "Hatching Phase: Days 18–21 – Chicks Emerge" },
+    { url: bottomSectionImg, caption: "Setter Phase: Days 1–18 – Embryo Development (Testing Phase)" },
+    { url: topSectionImg, caption: "Hatching Phase: Days 18–21 – Chicks Emerge (Testing Phase)" },
     { url: hatchedChickImg, caption: "Hatched Chicks: First Moments of Life 🐣" },
   ];
 
-  const projectSteps: ProjectStep[] = [
-    {
-      title: "System Design",
-      description: "Designed the control system architecture with Arduino Uno as the brain",
-      details: "Planned component layout, power requirements, and sensor placement for optimal monitoring",
-      icon: <Egg className="w-5 h-5" />
-    },
-    {
-      title: "Temperature Control",
-      description: "Implemented PID control for maintaining 37.5°C (99.5°F)",
-      details: "Used DHT22 sensor with heating element and relay module for precise temperature regulation",
-      icon: <Thermometer className="w-5 h-5" />
-    },
-    {
-      title: "Humidity Management",
-      description: "Automated humidity control system maintaining 45-55% RH",
-      details: "Integrated ultrasonic humidifier with water level sensor and automatic refill alerts",
-      icon: <Droplets className="w-5 h-5" />
-    },
-    {
-      title: "Egg Rotation",
-      description: "Built automatic egg turning mechanism with servo motors",
-      details: "Programmed to rotate eggs every 2 hours to ensure proper embryo development",
-      icon: <Wind className="w-5 h-5" />
-    }
-  ];
-
-  const techStack: string[] = [
-    "Arduino Uno", "C++", "DHT22 Sensor", "Servo Motors", 
-    "LCD Display", "Relay Modules", "PID Library"
-  ];
+const projectSteps: ProjectStep[] = [
+  {
+    title: "System Design",
+    description: "Advanced environmental control system powered by Arduino Mega",
+    details: "To support the continuous egg-laying cycle of hens, we developed an environmental control system capable of incubating up to 120 new eggs every 18 days in a setter. This system maintains optimal conditions for egg incubation across three zones—Setter, Hatcher, and Exterior—using precise temperature and humidity regulation. Sensors monitor temperature and humidity levels, connected to an Arduino Mega via a multiplexer to manage multiple sensors on a single I2C bus, overcoming the microcontroller’s limited I2C pin availability. Dimmable lights adjust brightness based on temperature readings, while five PWM-controlled fans regulate airflow, with TACH pins providing real-time fan speed monitoring. A linear actuator, driven by a motor driver, operates in timed cycles to gently rotate eggs, ensuring uniform development. A watchdog timer resets the Arduino in case of a system crash, ensuring reliability. The system dynamically adjusts fan speeds and light intensity based on temperature and humidity data from the three zones to maintain ideal incubation conditions.",
+    icon: <Egg className="w-5 h-5" />
+  },
+  {
+    title: "Temperature, Humidity Management",
+    description: "Dynamic threshold adjustments.",
+    details: "The climate control mechanism monitors temperature and humidity in the Hatcher, Setter, and exterior regions using AHT20 sensors, adjusting dimmable lights (0–80% brightness) and fans (0–100% speed) based on predefined thresholds to maintain optimal conditions, such as 37.2–37.5°C and 65–75% humidity for the Hatcher, and 37.5°C and 50–55% for the Setter. These thresholds account for system inertia, such as residual heat from lightbulbs, ensuring precise temperature and humidity regulation, with external temperature influencing Setter dimmer settings. Fallback values and sensor health checks enhance reliability by mitigating potential sensor failures.",
+    icon: <Thermometer className="w-5 h-5" />
+  },
+  {
+    title: "Egg Rotation",
+    description: "Automated egg turning with linear actuator",
+    details: "The linear actuator in the egg incubator system gently turns eggs to prevent the embryo from sticking to the inner egg wall. It uses a motor driver, controlled by specific pins, to move back and forth. The actuator follows a fixed sequence: it retracts for 60 seconds, stops for 10 seconds, then repeats 11 cycles of 3-second extensions and 3-second retractions, each followed by a 13-minute pause. One complete cycle, from start to reset, takes about 4 hours and 48 minutes.",    
+    icon: <RefreshCcwDot className="w-5 h-5" />
+  },
+  {
+    title: "System Reliability",
+    description: "Stable and continuous operation to protect delicate bird embryos through safeguards",
+    details:"The incubator system uses several features to stay reliable. A watchdog timer resets the Arduino if it freezes, ensuring it keeps running. Sensors are checked multiple times for accurate data, and if they fail, the system uses backup values to keep going. The I2C communication system retries connections and resets if needed to avoid lockups. Fans and lights are precisely controlled based on temperature and humidity, with fan speeds monitored to catch issues. The actuator follows a strict sequence with timed movements and resets after completing its cycles. Debug messages help track problems without slowing the system down. These mechanisms help maintain smooth incubator operation, protecting the delicate lives of developing birds despite potential hardware or software failures.",
+    icon: <Shield className="w-5 h-5" />
+  }
+];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
@@ -116,17 +117,18 @@ const IncubatorPortfolio: React.FC = () => {
             <div className="bg-slate-800/50 backdrop-blur rounded-xl p-6 border border-slate-700">
               <Thermometer className="w-10 h-10 text-amber-400 mb-4" />
               <h3 className="text-xl font-semibold mb-2">Precise Temperature</h3>
-              <p className="text-slate-300">±0.5°C accuracy with PID control algorithm</p>
+              <p className="text-slate-300">Target: Setter 37°C, Hatcher 37.5°C <br/> Accuracy: ±0.3°C</p>
             </div>
             <div className="bg-slate-800/50 backdrop-blur rounded-xl p-6 border border-slate-700">
               <Droplets className="w-10 h-10 text-blue-400 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Humidity Control</h3>
-              <p className="text-slate-300">Maintains optimal 45-55% relative humidity</p>
+              <h3 className="text-xl font-semibold mb-2">Adaptative Humidity</h3>
+              <p className="text-slate-300">Regulates 50-55% Setter, 65-75% Hatching with Fans</p>
             </div>
+
             <div className="bg-slate-800/50 backdrop-blur rounded-xl p-6 border border-slate-700">
-              <Wind className="w-10 h-10 text-green-400 mb-4" />
+              <RefreshCcwDot className="w-10 h-10 text-green-400 mb-4" />
               <h3 className="text-xl font-semibold mb-2">Auto Rotation</h3>
-              <p className="text-slate-300">Turns eggs every 2 hours automatically</p>
+              <p className="text-slate-300">Automatically rotates eggs every 4h 46m</p>
             </div>
           </div>
 
@@ -170,19 +172,95 @@ const IncubatorPortfolio: React.FC = () => {
           </div>
 
           {/* Tech Stack */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-center">Technologies Used</h2>
-            <div className="flex flex-wrap gap-3 justify-center">
-              {techStack.map((tech: string, idx: number) => (
-                <span 
-                  key={idx}
-                  className="px-4 py-2 bg-slate-800/50 backdrop-blur rounded-full border border-slate-700 text-sm"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+<div className="mb-16">
+  <h2 className="text-3xl font-bold mb-8 text-center">Technologies Used</h2>
+  
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+    {/* Programming */}
+    <div className="bg-slate-800/50 backdrop-blur rounded-lg p-4 border border-slate-700">
+      <div className="flex items-start gap-3">
+        <Code className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
+        <div>
+          <h4 className="font-semibold text-white">Programming Language</h4>
+          <p className="text-sm text-slate-400">C++</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Environmental Chamber */}
+    <div className="bg-slate-800/50 backdrop-blur rounded-lg p-4 border border-slate-700 md:col-span-2 lg:col-span-1">
+      <div className="flex items-start gap-3">
+        <Box className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
+        <div>
+          <h4 className="font-semibold text-white">Environmental Chamber</h4>
+          <p className="text-sm text-slate-400">Repurposed Refrigerator Housing</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Microcontroller */}
+    <div className="bg-slate-800/50 backdrop-blur rounded-lg p-4 border border-slate-700">
+      <div className="flex items-start gap-3">
+        <Cpu className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
+        <div>
+          <h4 className="font-semibold text-white">Microcontroller</h4>
+          <p className="text-sm text-slate-400">Arduino Mega</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Sensors */}
+    <div className="bg-slate-800/50 backdrop-blur rounded-lg p-4 border border-slate-700">
+      <div className="flex items-start gap-3">
+        <Thermometer className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
+        <div>
+          <h4 className="font-semibold text-white">Temperature & Humidity Sensors</h4>
+          <p className="text-sm text-slate-400">TCA9548A Multiplexer, AHT20</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Heat System */}
+    <div className="bg-slate-800/50 backdrop-blur rounded-lg p-4 border border-slate-700">
+      <div className="flex items-start gap-3">
+        <Flame className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
+        <div>
+          <h4 className="font-semibold text-white">Heat System</h4>
+          <p className="text-sm text-slate-400">AC Dimmers, 100W Incandescent Light Bulb</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Egg Turner */}
+    <div className="bg-slate-800/50 backdrop-blur rounded-lg p-4 border border-slate-700">
+      <div className="flex items-start gap-3">
+        <RefreshCcwDot  className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
+        <div>
+          <h4 className="font-semibold text-white">Egg Turner</h4>
+          <p className="text-sm text-slate-400">Double BTS7960 Driver, Linear Actuator 1500N</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Ventilation System */}
+    <div className="bg-slate-800/50 backdrop-blur rounded-lg p-4 border border-slate-700">
+      <div className="flex items-start gap-3">
+        <Wind className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
+        <div>
+          <h4 className="font-semibold text-white">Ventilation System</h4>
+          <p className="text-sm text-slate-400">ARCTIC F8 PWM, ARCTIC P14 PWM PST</p>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+</div>
+
 
           {/* Results */}
           <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-xl p-8 border border-amber-500/20 mb-16">
@@ -190,11 +268,11 @@ const IncubatorPortfolio: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                <p className="text-slate-300">Successfully hatched 18 out of 20 eggs (90% hatch rate)</p>
+                <p className="text-slate-300">Successfully hatched 11 out of 12 eggs on second try</p>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                <p className="text-slate-300">Total cost under $50 for complete system</p>
+                <p className="text-slate-300">Total cost under $350 for complete system</p>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
@@ -202,10 +280,57 @@ const IncubatorPortfolio: React.FC = () => {
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                <p className="text-slate-300">LCD display for real-time monitoring</p>
+                <p className="text-slate-300">Sustainable Source of Delight</p>
               </div>
             </div>
           </div>
+
+
+{/* Projected Improvements - Add this after the Results section */}
+<div className="mb-16">
+  <h2 className="text-3xl font-bold mb-8 text-center">Projected Improvements</h2>
+  
+  <div className="grid md:grid-cols-3 gap-6">
+    {/* Bluetooth Interface */}
+    <div className="bg-slate-800/50 backdrop-blur rounded-xl p-6 border border-slate-700">
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+          <Bluetooth className="w-6 h-6 text-white" />
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold mb-2">Bluetooth Monitoring</h3>
+          <p className="text-slate-400">Wireless serial monitoring without physical connection</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Section Control */}
+    <div className="bg-slate-800/50 backdrop-blur rounded-xl p-6 border border-slate-700">
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center flex-shrink-0">
+          <ToggleLeft className="w-6 h-6 text-white" />
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold mb-2">Zone Control</h3>
+          <p className="text-slate-400">Independent On/Off switches for setter and hatcher sections</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Egg Turner */}
+    <div className="bg-slate-800/50 backdrop-blur rounded-xl p-6 border border-slate-700">
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0">
+          <RefreshCcwDot className="w-5 h-5" />
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold mb-2">Egg Turner</h3>
+          <p className="text-slate-400">Building a custom egg turner with a 360-egg capacity</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {/* Contact Section */}
 <div className="bg-slate-800/50 backdrop-blur rounded-xl p-8 border border-slate-700 mb-16">
@@ -224,20 +349,20 @@ const IncubatorPortfolio: React.FC = () => {
       <h2 className="text-3xl font-bold mb-2">Let's Connect!</h2>
       <p className="text-xl text-amber-400 mb-4">Thomas Patenaude Poulin</p>
       <p className="text-slate-300 mb-6">
-Enthusiastic developer with a strong foundation in full-stack TypeScript and Node.js, passionate about exploring embedded systems and IoT to craft innovative solutions. 
+Enthusiastic developer with a strong foundation in full-stack TypeScript and Node.js, passionate about exploring embedded systems to craft innovative solutions. 
 Open to new projects and collaboration opportunities in both domains.
       </p>
       <div className="flex flex-wrap gap-4 justify-center md:justify-start">
         <a 
           href="mailto:your.email@example.com" 
-          className="flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 rounded-lg transition-colors"
+          className="flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 rounded-lg transition-colors !text-white"
         >
           <Mail className="w-5 h-5" />
           Email Me
         </a>
         <a 
           href="https://www.linkedin.com/in/thomas-patenaude-poulin/" 
-          className="flex items-center gap-2 px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+          className="flex items-center gap-2 px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors !text-white"
         >
           <Linkedin className="w-5 h-5" />
           LinkedIn
