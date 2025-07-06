@@ -138,11 +138,10 @@ const IncubatorPortfolio: React.FC = () => {
                 <div 
                   key={idx}
                   className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700 overflow-hidden"
-                >
-                  {/* TODO Fix this background colors ! */}
+                >                  
                   <button
                     onClick={() => setActiveStep(activeStep === idx ? null : idx)}
-                    className=" w-full p-6 flex items-center justify-between hover:bg-slate-700/30 transition-colors"
+                    className=" w-full p-6 flex items-center justify-between hover:bg-slate-700/30 !bg-slate-800/50 transition-colors !outline-none"
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
@@ -155,8 +154,9 @@ const IncubatorPortfolio: React.FC = () => {
                     </div>
                     <ChevronRight className={`w-5 h-5 transition-transform ${activeStep === idx ? 'rotate-90' : ''}`} />
                   </button>
+
                   {activeStep === idx && (
-                    <div className="px-6 pb-6 pt-2">
+                    <div className="px-6 pb-6 pt-2 ">
                       <p className="text-slate-300 pl-16">{step.details}</p>
                     </div>
                   )}
