@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { ChevronRight, Github, Thermometer, Droplets, Wind, Egg, CheckCircle, ExternalLink } from 'lucide-react';
+import fritzingWiringPlanImg from '../public/img/fritzing_wiring_plan.png'
+import arduinoCircuitImg from '../public/img/arduino-circuit.png'
+import bottomSectionImg from '../public/img/bottom-section.jpg'
+import topSectionImg from '../public/img/top-section.jpg'
+import hatchedChickImg from '../public/img/hatched-chick.jpg'
 
 interface ProjectImage {
   url: string;
@@ -19,10 +24,11 @@ const IncubatorPortfolio: React.FC = () => {
 
   // Replace these with your actual image URLs
   const projectImages: ProjectImage[] = [
-    { url: "https://via.placeholder.com/800x600/1a1a2e/eee?text=Incubator+Overview", caption: "Complete incubator system" },
-    { url: "https://via.placeholder.com/800x600/16213e/eee?text=Arduino+Setup", caption: "Arduino Uno with sensors" },
-    { url: "https://via.placeholder.com/800x600/0f3460/eee?text=Temperature+Control", caption: "Temperature & humidity sensors" },
-    { url: "https://via.placeholder.com/800x600/533483/eee?text=Final+Product", caption: "Working prototype with eggs" }
+    { url: fritzingWiringPlanImg, caption: "Fritzing wiring plan" },
+    { url: arduinoCircuitImg, caption: "Built Arduino circuit" },
+    { url: bottomSectionImg, caption: "Bottom section: 1 to 18 days. " },
+    { url: topSectionImg, caption: "Top section: 18 days to 21" },
+    { url: hatchedChickImg, caption: "Freshly hatched chicken 🐣" },
   ];
 
   const projectSteps: ProjectStep[] = [
@@ -75,11 +81,11 @@ const IncubatorPortfolio: React.FC = () => {
 
           {/* Image Gallery */}
           <div className="mb-16">
-            <div className="relative rounded-xl overflow-hidden shadow-2xl bg-slate-800/50 backdrop-blur">
+            <div className="relative rounded-xl overflow-hidden shadow-2xl bg-slate-800/50 backdrop-blur w-[500px] mx-auto">
               <img 
                 src={projectImages[activeImage].url} 
                 alt={projectImages[activeImage].caption}
-                className="w-full h-[500px] object-cover"
+                className="w-[500px] h-full object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                 <p className="text-lg font-medium">{projectImages[activeImage].caption}</p>
@@ -126,15 +132,17 @@ const IncubatorPortfolio: React.FC = () => {
           {/* Build Process */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8 text-center">Build Process</h2>
+           
             <div className="space-y-4">
               {projectSteps.map((step: ProjectStep, idx: number) => (
                 <div 
                   key={idx}
                   className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700 overflow-hidden"
                 >
+                  {/* TODO Fix this background colors ! */}
                   <button
                     onClick={() => setActiveStep(activeStep === idx ? null : idx)}
-                    className="w-full p-6 flex items-center justify-between hover:bg-slate-700/30 transition-colors"
+                    className=" w-full p-6 flex items-center justify-between hover:bg-slate-700/30 transition-colors"
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
