@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { ChevronRight, Github, Thermometer, Droplets, Wind, Egg, CheckCircle, ExternalLink } from 'lucide-react';
-import fritzingWiringPlanImg from '../public/img/fritzing_wiring_plan.png'
+import { ChevronRight, Github, Thermometer, Droplets, Wind, Egg, CheckCircle, ExternalLink, Mail, Linkedin } from 'lucide-react';
+import fritzingWiringPlanImg from '../public/img/fritzing-wiring-plan.png'
 import arduinoCircuitImg from '../public/img/arduino-circuit.png'
 import bottomSectionImg from '../public/img/bottom-section.jpg'
 import topSectionImg from '../public/img/top-section.jpg'
 import hatchedChickImg from '../public/img/hatched-chick.jpg'
+import linkedinProfileImg from '../public/img/linkedin-profile.png'
 
 interface ProjectImage {
   url: string;
@@ -24,11 +25,11 @@ const IncubatorPortfolio: React.FC = () => {
 
   // Replace these with your actual image URLs
   const projectImages: ProjectImage[] = [
-    { url: fritzingWiringPlanImg, caption: "Fritzing wiring plan" },
-    { url: arduinoCircuitImg, caption: "Built Arduino circuit" },
-    { url: bottomSectionImg, caption: "Bottom section: 1 to 18 days. " },
-    { url: topSectionImg, caption: "Top section: 18 days to 21" },
-    { url: hatchedChickImg, caption: "Freshly hatched chicken 🐣" },
+    { url: fritzingWiringPlanImg, caption: "Fritzing Wiring Plan: Complete Incubator Circuit" },
+    { url: arduinoCircuitImg, caption: "Wired Incubator: From Fritzing to Reality" },
+    { url: bottomSectionImg, caption: "Setter Phase: Days 1–18 – Embryo Development" },
+    { url: topSectionImg, caption: "Hatching Phase: Days 18–21 – Chicks Emerge" },
+    { url: hatchedChickImg, caption: "Hatched Chicks: First Moments of Life 🐣" },
   ];
 
   const projectSteps: ProjectStep[] = [
@@ -71,7 +72,7 @@ const IncubatorPortfolio: React.FC = () => {
           {/* Project Header */}
           <div className="mb-12 text-center">
             <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
-              Arduino Chick Incubator
+              Nurturing Life: Arduino-Powered Poultry Incubator
             </h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               An automated incubation system with precise temperature and humidity control, 
@@ -81,11 +82,11 @@ const IncubatorPortfolio: React.FC = () => {
 
           {/* Image Gallery */}
           <div className="mb-16">
-            <div className="relative rounded-xl overflow-hidden shadow-2xl bg-slate-800/50 backdrop-blur w-[500px] mx-auto">
+            <div className=" rounded-xl overflow-hidden shadow-2xl bg-slate-800/50 backdrop-blur w-auto md:w-[500px] mx-auto">
               <img 
                 src={projectImages[activeImage].url} 
                 alt={projectImages[activeImage].caption}
-                className="w-[500px] h-full object-cover"
+                className="w-auto h-full object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                 <p className="text-lg font-medium">{projectImages[activeImage].caption}</p>
@@ -137,11 +138,14 @@ const IncubatorPortfolio: React.FC = () => {
               {projectSteps.map((step: ProjectStep, idx: number) => (
                 <div 
                   key={idx}
-                  className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700 overflow-hidden"
-                >                  
-                  <button
+                  className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700 overflow-hidden hover:bg-slate-700/30 transition-colors cursor-pointer"
+                >   
+                  <div
+                  role="button"
+  tabIndex={0}
+    onKeyDown={(e) => e.key === 'Enter' && setActiveStep(activeStep === idx ? null : idx)}
                     onClick={() => setActiveStep(activeStep === idx ? null : idx)}
-                    className=" w-full p-6 flex items-center justify-between hover:bg-slate-700/30 !bg-slate-800/50 transition-colors !outline-none"
+                    className=" w-full p-6 flex items-center justify-between !outline-none]"
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
@@ -153,10 +157,10 @@ const IncubatorPortfolio: React.FC = () => {
                       </div>
                     </div>
                     <ChevronRight className={`w-5 h-5 transition-transform ${activeStep === idx ? 'rotate-90' : ''}`} />
-                  </button>
+                  </div>
 
                   {activeStep === idx && (
-                    <div className="px-6 pb-6 pt-2 ">
+                    <div className="px-6 pb-6 pt-2">
                       <p className="text-slate-300 pl-16">{step.details}</p>
                     </div>
                   )}
@@ -203,18 +207,59 @@ const IncubatorPortfolio: React.FC = () => {
             </div>
           </div>
 
+{/* Contact Section */}
+<div className="bg-slate-800/50 backdrop-blur rounded-xl p-8 border border-slate-700 mb-16">
+  <div className="flex flex-col md:flex-row items-center gap-8">
+    {/* Profile Picture */}
+    <div className="flex-shrink-0">
+      <img 
+        src={linkedinProfileImg} 
+        alt="Thomas Patenaude Poulin"
+        className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-amber-400/30 shadow-xl"
+      />
+    </div>
+    
+    {/* Contact Info */}
+    <div className="flex-1 text-center md:text-left">
+      <h2 className="text-3xl font-bold mb-2">Let's Connect!</h2>
+      <p className="text-xl text-amber-400 mb-4">Thomas Patenaude Poulin</p>
+      <p className="text-slate-300 mb-6">
+Enthusiastic developer with a strong foundation in full-stack TypeScript and Node.js, passionate about exploring embedded systems and IoT to craft innovative solutions. 
+Open to new projects and collaboration opportunities in both domains.
+      </p>
+      <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+        <a 
+          href="mailto:your.email@example.com" 
+          className="flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 rounded-lg transition-colors"
+        >
+          <Mail className="w-5 h-5" />
+          Email Me
+        </a>
+        <a 
+          href="https://www.linkedin.com/in/thomas-patenaude-poulin/" 
+          className="flex items-center gap-2 px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+        >
+          <Linkedin className="w-5 h-5" />
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
           {/* CTA Buttons */}
           <div className="flex gap-4 justify-center">
             <a 
               href="https://github.com/yourusername/arduino-incubator" 
-              className="flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors !text-white"
             >
               <Github className="w-5 h-5" />
               View on GitHub
             </a>
             <a 
               href="#" 
-              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 rounded-lg transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 rounded-lg transition-colors !text-white"
             >
               <ExternalLink className="w-5 h-5" />
               Live Documentation
